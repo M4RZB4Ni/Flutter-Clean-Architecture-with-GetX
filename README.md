@@ -2,15 +2,16 @@
 
 Technical Assessment for MateMachine Company (Canada)
 
-## Getting Started
+this project use this libraries:
+1-GetX
+2-Build Runner
+3-Freezed
 
-This project is a starting point for a Flutter application.
+and this project is based MVVM architecture
 
-A few resources to get you started if this is your first Flutter project:
+before run project execute these commands in terminal:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+1-flutter bub get
+2-flutter packages pub run build_runner build --delete-conflicting-outputs
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+

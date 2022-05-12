@@ -1,37 +1,52 @@
-import 'package:flutter/services.dart';
+import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
 import 'package:get/get.dart';
 import 'package:image_downloader/image_downloader.dart';
 import 'package:wallpaper_application_assessment/app/base/base_controller.dart';
-import 'package:wallpaper_application_assessment/app/messages/printers.dart';
 import 'package:wallpaper_application_assessment/data/data_models/wallpapaers/response/get_wallpaper_response.dart';
 
 class DetailsPageController extends BaseController{
 
   late Wallpaper wallpaper;
-
+  RxBool downloadLoading=true.obs;
+  RxBool setBackground=true.obs;
+  String? downloadedPath;
   @override
   void onInit() {
     wallpaper=Get.arguments;
     super.onInit();
   }
 
-  void downloadImage({required final String imagePath}) async
+  Future<String?> downloadImage({required final String imagePath}) async
   {
-    try {
-      // Saved with this method.
-      final imageId = await ImageDownloader.downloadImage(imagePath);
+    downloadLoading.value=false;
+     final imageId = await ImageDownloader.downloadImage(imagePath);
       if (imageId == null) {
-        return;
+        return null;
       }
 
-      final fileName = await ImageDownloader.findName(imageId);
-      final path = await ImageDownloader.findPath(imageId);
-      final size = await ImageDownloader.findByteSize(imageId);
-      final mimeType = await ImageDownloader.findMimeType(imageId);
+      downloadedPath= await ImageDownloader.findPath(imageId);
+      Get.snackbar('Image Downloaded', 'Go to the Gallery',snackStyle: SnackStyle.GROUNDED);
+     downloadLoading.value=true;
+      return downloadedPath;
 
-    } on PlatformException catch (error) {
-      realDebugPrint(error);
+  }
+
+  Future<void> setBackgroundMobile()async{
+    setBackground.value=false;
+    if(downloadedPath!=null) {
+      final location = WallpaperManager.HOME_SCREEN;
+      final result = await WallpaperManager.setWallpaperFromFile(
+          downloadedPath!, location,);
+      if(result){
+        Get.snackbar('Image is Set', 'Check your background',snackStyle: SnackStyle.GROUNDED);
+      }
+    }else{
+      Get.snackbar('Must Download first', 'Please Download image First',snackStyle: SnackStyle.GROUNDED);
+
     }
+
+    setBackground.value=true;
+
   }
 
 }
