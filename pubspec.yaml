@@ -23,6 +23,7 @@ dependencies:
   skeleton_animation: ^0.1.4
   get_storage: ^2.0.3
   flutter_wallpaper_manager: ^0.0.3
+  mockito: ^5.1.0
 
 dev_dependencies:
   build_runner: ^2.1.10

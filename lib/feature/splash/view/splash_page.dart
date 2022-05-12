@@ -8,7 +8,7 @@ class SplashPage extends BaseView<SplashController>{
 
   @override
   Widget body(final BuildContext context) {
-    return APPLoadFullScreen();
+    return const APPLoadFullScreen(key: Key('AppLoadFullState'),);
   }
 
   @override

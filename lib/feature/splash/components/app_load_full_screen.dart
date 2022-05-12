@@ -7,6 +7,9 @@ import 'package:wallpaper_application_assessment/app/resources/app_spacing.dart'
 import 'package:wallpaper_application_assessment/app/resources/app_text_style.dart';
 
 class APPLoadFullScreen extends StatelessWidget{
+
+  const APPLoadFullScreen({final Key? key}): super(key: key);
+
   @override
   Widget build(final BuildContext context) {
     return Center(
@@ -26,6 +29,4 @@ class APPLoadFullScreen extends StatelessWidget{
       ),
     );
   }
-
-
 }
