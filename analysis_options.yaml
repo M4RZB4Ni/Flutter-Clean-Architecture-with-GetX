@@ -1,0 +1,140 @@
+
+include: all_lint_rules.yaml
+
+analyzer:
+  strong-mode:
+    implicit-casts: true
+    implicit-dynamic: true
+  errors:
+    # Otherwise cause the import of all_lint_rules to warn because of some rules conflicts.
+    # The conflicts are fixed in this file instead, so we can safely ignore the warning.
+    included_file_warning: ignore
+    missing_required_param: error
+    prefer_const_constructors: warning
+    invalid_use_of_protected_member: error
+    invalid_annotation_target: ignore
+    parameter_assignments: error
+    missing_return: error
+    avoid_returning_null: error
+    avoid_returning_null_for_future: error
+    avoid_void_async: warning
+    prefer_const_literals_to_create_immutables: warning
+    constant_identifier_names: warning
+    sort_pub_dependencies: warning
+    non_constant_identifier_names: warning
+    must_be_immutable: ignore
+    avoid_function_literals_in_foreach_calls: warning
+    prefer_final_locals: warning
+    prefer_final_fields: warning
+    avoid_classes_with_only_static_members: warning
+    implementation_imports: warning
+    avoid_positional_boolean_parameters: warning
+    always_use_package_imports: warning
+    avoid_final_parameters: ignore
+
+
+  cannot-ignore:
+    - error
+    - warning
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    # This is generated from the i18n vscode extension
+    - "**/i18n.dart"
+    # - "**/*.mocks.dart"
+    # - "test/**"
+
+
+
+linter:
+  rules:
+    # Flutter widgets always put a Key as first optional parameter which breaks this rule.
+    # Also violates other orderings like matching the class fields or alphabetically.
+    always_put_required_named_parameters_first: false
+
+    # Conflicts with `omit_local_variable_types`
+    # Since dart 2.0 dart is a sound language, specifying types is not required anymore.
+    # We want to avoid unnecessary types to make the code more readable.
+    always_specify_types: false
+
+    # Conflicts with `prefer_single_quotes`
+    # Single quotes are easier to use.
+    prefer_double_quotes: false
+
+    # Incompatible with `prefer_final_locals`
+    # Having immutable local variables makes larger functions more predictible
+    # so we will use `prefer_final_locals` instead.
+    unnecessary_final: false
+
+    # While very useful for packages, it is too tiresome to apply for private projects.
+    # Disabling it avoid redundant comments like:
+    # // The counter
+    # int count;
+    public_member_api_docs: false
+
+    # A leftover from dart1, should be deprecated
+    avoid_as: false
+
+    # Single line `if`s are fine as recommended in Effective Dart.
+    always_put_control_body_on_new_line: false
+
+    # It's too opinionated.
+    sort_constructors_first: true
+
+    # Disabled for now. May be usefull in the future.
+    diagnostic_describe_all_properties: false
+
+    # 3rd party mixins can't be changed to use the mixin syntax.
+    # Like `WidgetsBindingObserver` from flutter sdk.
+    prefer_mixin: false
+
+    # Conflicting with `avoid_relative_lib_imports` which is enforced.
+    prefer_relative_imports: false
+
+    # Sometimes some functions whcih return a Future just need to be called
+    # without the need to wait for the result though it may be in an async
+    # function, like a bloc `mapEventToState` method.
+    unawaited_futures: false
+
+    # Adding the type is not required, but sometimes improves readability. Therefore removing it doesn't always help
+    avoid_types_on_closure_parameters: false
+
+    # All methods should define a return type. dynamic is no exception.
+    # Conflicts with disabling `implicit-dynamic`
+    avoid_annotating_with_dynamic: false
+
+    # This is not always suitable. Some return statments may be long.
+    prefer_expression_function_bodies: false
+
+    # Not useful for now. May be useful when a lot of people are working on this project :D.
+    flutter_style_todos: false
+
+    # Adding a key without using it isn't helpful in applications.
+    use_key_in_widget_constructors: false
+
+    # Assertions blocks don't require a message because they throw simple to understand errors.
+    prefer_asserts_with_message: false
+
+    # Nobody wants to manually wrap lines when changing a few words. This rule is too hard to be a "general" rule
+    # Disabling for now.
+    lines_longer_than_80_chars: false
+
+    # This causes problems in cases where we dont' want to handle all cases of an enum for example.
+    # this rule, missing_enum_constant_in_switch, does not allow to do that, which makes sense.
+    no_default_cases: false
+
+    # Defining interfaces (abstract classes), with only one method, makes sense architecture wise
+    one_member_abstracts: false
+
+    # There are no strong arguments to enable this rule because it is very strict. Catching anything is useful
+    # and common even if not always the most correct thing to do.
+    # Disabling for now. May be enabled in the future.
+    avoid_catches_without_on_clauses: false
+
+    # Environment variables are useful for things like configurations (e.g. base API URL).
+    do_not_use_environment: false
+
+    cascade_invocations: false
+    depend_on_referenced_packages: false
+    close_sink: true
+    unnecessary_new: true
