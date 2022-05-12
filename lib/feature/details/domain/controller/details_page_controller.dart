@@ -10,9 +10,13 @@ class DetailsPageController extends BaseController{
   RxBool downloadLoading=true.obs;
   RxBool setBackground=true.obs;
   String? downloadedPath;
+  RxInt percentageDownload=0.obs;
   @override
   void onInit() {
     wallpaper=Get.arguments;
+    ImageDownloader.callback(onProgressUpdate: (final p0, final p1) {
+        percentageDownload.value=p1;
+    },);
     super.onInit();
   }
 
