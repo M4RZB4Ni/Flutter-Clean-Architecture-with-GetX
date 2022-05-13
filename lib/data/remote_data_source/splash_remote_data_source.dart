@@ -8,7 +8,7 @@ import 'package:wallpaper_application_assessment/data/network/networking.dart';
 import 'package:wallpaper_application_assessment/data/network/server_path.dart';
 
 abstract class SplashRemoteDataSource {
-  Future<ApiResult<GetWallpapersResponse>> getWallpapers({required final GetWallpapersRequest getWallpapersRequest});
+  Future<ApiResult<GetWallpapersResponse>> getWallpapers({final GetWallpapersRequest getWallpapersRequest});
 
 }
 class SplashRemoteDataSourceImp extends SplashRemoteDataSource{
@@ -17,7 +17,7 @@ class SplashRemoteDataSourceImp extends SplashRemoteDataSource{
   final NetworkHelper _client;
 
   @override
-  Future<ApiResult<GetWallpapersResponse>> getWallpapers({required final GetWallpapersRequest getWallpapersRequest}) async {
+  Future<ApiResult<GetWallpapersResponse>> getWallpapers({final GetWallpapersRequest? getWallpapersRequest}) async {
     try {
       final result = await _client.get(url: ServerPath.main);
       return ApiResult.success(data: GetWallpapersResponse.fromJson(result));
