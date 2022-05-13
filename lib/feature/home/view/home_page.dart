@@ -9,7 +9,7 @@ import 'package:wallpaper_application_assessment/feature/home/domain/controller/
 class HomePage extends BaseView<HomePageController>{
   @override
   Widget body(final BuildContext context) {
-    return APPWallpaperListView(wallpapers: controller.wallpapers, imageSizes: [Get.width,AppSize.s300],onTap: controller.goToDetailsPage,);
+    return APPWallpaperListView(key: const Key('homeListView'),wallpapers: controller.wallpapers, imageSizes: [Get.width,AppSize.s300],onTap: controller.goToDetailsPage,);
   }
 
 }

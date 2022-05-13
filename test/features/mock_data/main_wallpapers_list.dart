@@ -1,3 +1,4 @@
+// ignore_for_file: unnecessary_string_escapes
 import 'package:wallpaper_application_assessment/data/data_models/wallpapaers/request/get_wallpaper_request.dart';
 
 class ServerMocks{

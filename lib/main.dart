@@ -7,18 +7,23 @@ import 'package:wallpaper_application_assessment/app/routes/app_pages.dart';
 import 'package:wallpaper_application_assessment/app/routes/app_routes.dart';
 
 void main() {
+
   runApp(const MainApp());
 }
 
+
 class MainApp extends StatelessWidget {
+
   const MainApp({
     final Key? key,
   }) : super(key: key);
 
   @override
   Widget build(final BuildContext context) {
+
     return  ScreenUtilInit(
       builder: (final context) => GetMaterialApp(
+
         title: 'Wallpaper App',
         debugShowCheckedModeBanner: false,
         initialRoute: Routes.splash,

@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:wallpaper_application_assessment/app/base/base_controller.dart';
-import 'package:wallpaper_application_assessment/app/messages/printers.dart';
 import 'package:wallpaper_application_assessment/app/routes/app_routes.dart';
 import 'package:wallpaper_application_assessment/data/data_models/wallpapaers/request/get_wallpaper_request.dart';
 import 'package:wallpaper_application_assessment/data/data_models/wallpapaers/response/get_wallpaper_response.dart';
