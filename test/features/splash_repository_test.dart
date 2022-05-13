@@ -12,9 +12,7 @@ import 'package:wallpaper_application_assessment/data/remote_data_source/splash_
 import 'package:wallpaper_application_assessment/feature/splash/domain/repositories/splash_repository.dart';
 
 import 'mock_data/main_wallpapers_list.dart';
-import 'splash_test.mocks.dart';
-
-
+import 'splash_repository_test.mocks.dart';
 
 
 @GenerateMocks([http.Client,SplashRemoteDataSource])
@@ -25,19 +23,14 @@ Future<void> main() async {
   setUp(() {
     api = MockSplashRemoteDataSource();
     repo = SplashRepositoryImp(api);
-
   });
 
-  group('Repository getWallpapers',() {
-    test('should fetch all data from server', ()async {
-      final list = GetWallpapersResponse.fromJson(jsonDecode(ServerMocks.listsResponse));
-      when(api.getWallpapers(getWallpapersRequest: ServerMocks.mockRequest))
-          .thenAnswer((final _) async => ApiResult.success(data: list));
-      final t = await repo.getWallpapers(getWallpapersRequest: ServerMocks.mockRequest);
-      expect(t, equals(ApiResult.success(data: list)));
-
-
-    },);
+  test('should return data', ()async {
+    final list = GetWallpapersResponse.fromJson(jsonDecode(ServerMocks.listsResponse));
+    when(api.getWallpapers(getWallpapersRequest: ServerMocks.mockRequest))
+        .thenAnswer((final _) async => ApiResult.success(data: list));
+    final t = await repo.getWallpapers(getWallpapersRequest: ServerMocks.mockRequest);
+    expect(t, equals(ApiResult.success(data: list)));
   },);
 
 }
