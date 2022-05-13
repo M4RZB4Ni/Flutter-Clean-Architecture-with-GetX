@@ -29,7 +29,7 @@ Future<void> main() async {
   });
 
   group('Repository getWallpapers',() {
-    test('should return ApiResult<List<LanguageResponseModel>', ()async {
+    test('should fetch all data from server', ()async {
       final list = GetWallpapersResponse.fromJson(jsonDecode(ServerMocks.listsResponse));
       when(api.getWallpapers(getWallpapersRequest: ServerMocks.mockRequest))
           .thenAnswer((final _) async => ApiResult.success(data: list));

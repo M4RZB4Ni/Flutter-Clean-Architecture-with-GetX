@@ -45,7 +45,6 @@ class APPImageViewState extends State<APPImageView>
       showImage = false;
     }
     setState(() {});
-    // realDebugPrint('widget.url: ${widget.url} showImage: $showImage');
   }
 
   @override

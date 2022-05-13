@@ -25,7 +25,6 @@ class SplashController extends BaseController {
     response.when(
       success: (final result) async {
         wallpapers = result.data;
-        realDebugPrint('dataFetched-->${wallpapers!.first}');
         goToHome();
       },
       failure: (final err) {

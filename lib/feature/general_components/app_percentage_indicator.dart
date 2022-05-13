@@ -10,6 +10,7 @@ class APPPercentageIndicator extends StatefulWidget{
   @override
   APPPercentageIndicatorState createState() => APPPercentageIndicatorState();
 
+  /// for set percentage as Int
   final int percentage;
 }
 

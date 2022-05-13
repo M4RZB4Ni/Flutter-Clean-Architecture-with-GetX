@@ -16,7 +16,7 @@ class APPButtonActive extends StatelessWidget {
     this.padding=AppSpacing.s16All,
     this.loading = false,
     this.width=AppSize.s120,
-    this.radius = 8,
+    this.radius = AppSize.s08,
   }) : super(key: key);
 
   /// title for show in button
