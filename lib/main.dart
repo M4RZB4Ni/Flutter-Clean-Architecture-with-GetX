@@ -32,7 +32,7 @@ class MainApp extends StatelessWidget {
         initialBinding: MainBinding(),
         supportedLocales: const [Locale('en')],
         fallbackLocale: const Locale('en'),
-        getPages: AppPages.pages,
+        getPages: AppPages().pages,
       ),
     );
 

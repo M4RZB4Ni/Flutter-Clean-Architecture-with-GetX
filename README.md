@@ -24,7 +24,7 @@ this project use this libraries:
 
 before run project execute these commands in terminal:
 
-1-flutter bub get
+1-flutter pub get
 2-flutter packages pub run build_runner build --delete-conflicting-outputs
 
 and remember to turn on your VPN before start application (the webservice is filter).
