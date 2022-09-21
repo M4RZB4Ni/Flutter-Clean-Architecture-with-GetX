@@ -1,6 +1,6 @@
 # wallpaper_application_assessment
 
-Technical Assessment for MateMachine Company (Canada)
+Flutter Clean Architecture
 
 All Requirements like :
 1-Download image
