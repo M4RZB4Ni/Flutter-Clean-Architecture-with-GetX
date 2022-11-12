@@ -1,4 +1,4 @@
-# Flutter Clean Architecture
+# Flutter Clean Architecture with GetX state management
 
 
 
